@@ -23,8 +23,19 @@ const animationStates = [
 	}
 ];
 //forEach executes provided functions once for each array, Es6 syntax arrow function
-animationStates.forEach((state, index) => {})
-
+animationStates.forEach((state, index) => {
+	let frames = {
+		loc: [],
+	}
+	for (let j = 0; j < state.frames; j++){
+		let positionX = j * spriteWidth;
+		let positionY = index * spriteHeight;
+		frames.loc.push({x: positionX, y: positionY});
+	}
+	spriteAnimations[state.name] = frames;
+});
+console.log(animationStates);
+	
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 	//gameframe divided by stagerframes means we will have to increase gameframe 5 times before we get to run
