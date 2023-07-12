@@ -16,12 +16,14 @@ const animationStates = [
 	{
 		name: 'idle',
 		frames: 7,
-	}
+	},
 	{
 		name: 'jump',
 		frames: 7,
 	}
-]
+];
+//forEach executes provided functions once for each array, Es6 syntax arrow function
+animationStates.forEach((state, index) => {})
 
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
