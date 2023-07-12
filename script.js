@@ -10,13 +10,25 @@ const spriteHeight = 523;
 let frameX = 0;
 let frameY = 0;
 let gameFrame = 0;
-const stagerFrames = 0;
+const stagerFrames = 5;
+const spriteAnimations = [];
+const animationStates = [
+	{
+		name: 'idle',
+		frames: 7,
+	}
+	{
+		name: 'jump',
+		frames: 7,
+	}
+]
 
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 	//gameframe divided by stagerframes means we will have to increase gameframe 5 times before we get to run
 	let position = Math.floor(gameFrame/stagerFrames) % 6;
-	ctx.drawImage(playerImage, frameX * spriteWidth, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+	frameX = spriteWidth * position;
+	ctx.drawImage(playerImage, frameX, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 	
 
 	gameFrame++;
