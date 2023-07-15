@@ -7,8 +7,7 @@ const playerImage = new Image();
 playerImage.src = "images/shadow_dog.png";
 const spriteWidth = 575;
 const spriteHeight = 523;
-let frameX = 0;
-let frameY = 0;
+
 let gameFrame = 0;
 const stagerFrames = 5;
 const spriteAnimations = [];
@@ -39,12 +38,15 @@ console.log(animationStates);
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 	//gameframe divided by stagerframes means we will have to increase gameframe 5 times before we get to run
-	let position = Math.floor(gameFrame/stagerFrames) % 6;
-	frameX = spriteWidth * position;
-	ctx.drawImage(playerImage, frameX, frameY * spriteHeight, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
+	let position = Math.floor(gameFrame/stagerFrames) % spriteAnimations["idle"].loc.length;
+	let frameX = spriteWidth * position;
+	let frameY = spriteAnimations["idle"].loc[position].y;
+
+	ctx.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 	
 
 	gameFrame++;
 	requestAnimationFrame(animate);
 };
 animate();
+
