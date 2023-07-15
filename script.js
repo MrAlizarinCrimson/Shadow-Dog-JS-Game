@@ -8,6 +8,8 @@ playerImage.src = "images/shadow_dog.png";
 const spriteWidth = 575;
 const spriteHeight = 523;
 
+let playerState = 'run';
+//we can manipulate whole movements with playerState just from animate function//
 let gameFrame = 0;
 const stagerFrames = 5;
 const spriteAnimations = [];
@@ -53,7 +55,7 @@ const animationStates = [
 		frames: 7,
 	}
 ];
-//forEach executes provided functions once for each array, Es6 syntax arrow function
+//forEach executes provided functions once for each array, Es6 syntax arrow function//
 animationStates.forEach((state, index) => {
 	let frames = {
 		loc: [],
@@ -69,10 +71,10 @@ console.log(animationStates);
 	
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-	//gameframe divided by stagerframes means we will have to increase gameframe 5 times before we get to run
-	let position = Math.floor(gameFrame/stagerFrames) % spriteAnimations["idle"].loc.length;
+	//gameframe divided by stagerframes means we will have to increase gameframe 5 times before we get to run//
+	let position = Math.floor(gameFrame/stagerFrames) % spriteAnimations[playerState].loc.length;
 	let frameX = spriteWidth * position;
-	let frameY = spriteAnimations["idle"].loc[position].y;
+	let frameY = spriteAnimations[playerState].loc[position].y;
 
 	ctx.drawImage(playerImage, frameX, frameY, spriteWidth, spriteHeight, 0, 0, spriteWidth, spriteHeight);
 	
