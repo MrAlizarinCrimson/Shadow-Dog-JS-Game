@@ -1,3 +1,9 @@
+let playerState = 'idle';
+const dropdown = document.getElementById('animations');
+dropdown.addEventListener('change', function(e){
+	playerState = e.target.value;
+})
+
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
 
@@ -8,7 +14,7 @@ playerImage.src = "images/shadow_dog.png";
 const spriteWidth = 575;
 const spriteHeight = 523;
 
-let playerState = 'run';
+
 //we can manipulate whole movements with playerState just from animate function//
 let gameFrame = 0;
 const stagerFrames = 5;
@@ -51,8 +57,8 @@ const animationStates = [
 		frames: 12,
 	},
 	{
-		name: 'getHit',
-		frames: 7,
+		name: 'gethit',
+		frames: 4,
 	}
 ];
 //forEach executes provided functions once for each array, Es6 syntax arrow function//
@@ -67,7 +73,7 @@ animationStates.forEach((state, index) => {
 	}
 	spriteAnimations[state.name] = frames;
 });
-console.log(animationStates);
+console.log(spriteAnimations);
 	
 function animate(){
 	ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -83,4 +89,3 @@ function animate(){
 	requestAnimationFrame(animate);
 };
 animate();
-
